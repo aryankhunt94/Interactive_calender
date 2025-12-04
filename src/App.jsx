@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { addMonths, subMonths } from 'date-fns';
+import { addMonths, subMonths, setYear } from 'date-fns';
 import CalendarHeader from './components/Calendar/CalendarHeader';
 import CalendarGrid from './components/Calendar/CalendarGrid';
 import DayModal from './components/Modal/DayModal';
@@ -10,6 +10,7 @@ function App() {
 
     const nextMonth = () => setCurrentDate(addMonths(currentDate, 1));
     const prevMonth = () => setCurrentDate(subMonths(currentDate, 1));
+    const handleYearChange = (year) => setCurrentDate(setYear(currentDate, parseInt(year)));
 
     const handleDateClick = (date) => {
         setSelectedDate(date);
@@ -29,6 +30,7 @@ function App() {
                     currentDate={currentDate}
                     onPrevMonth={prevMonth}
                     onNextMonth={nextMonth}
+                    onYearChange={handleYearChange}
                 />
 
                 <CalendarGrid

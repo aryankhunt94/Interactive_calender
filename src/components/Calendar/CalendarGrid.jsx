@@ -38,16 +38,16 @@ const CalendarGrid = ({ currentDate, onDateClick }) => {
                     return (
                         <motion.div
                             key={dayItem.toString()}
-                            whileHover={{ scale: 1.05, backgroundColor: "rgba(56, 189, 248, 0.1)" }}
+                            whileHover={{ scale: 1.05, zIndex: 10 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => onDateClick(dayItem)}
                             className={`
-                aspect-square rounded-2xl flex flex-col items-center justify-center cursor-pointer transition-colors relative overflow-hidden
-                ${!isCurrentMonth ? 'text-slate-700 bg-slate-900/20' : 'text-slate-300 bg-slate-800/40 hover:bg-slate-800'}
-                ${isCurrentDay ? 'ring-2 ring-sky-500 bg-sky-500/10 text-sky-400' : ''}
+                aspect-square rounded-2xl flex flex-col items-center justify-center cursor-pointer transition-all duration-300 relative overflow-hidden
+                ${!isCurrentMonth ? 'text-slate-700 bg-slate-900/20' : 'text-slate-300 bg-slate-800/40 hover:bg-slate-800 hover:shadow-[0_0_20px_rgba(56,189,248,0.3)] hover:border-sky-500/30 border border-transparent'}
+                ${isCurrentDay ? 'ring-2 ring-sky-500 bg-sky-500/20 text-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.4)]' : ''}
               `}
                         >
-                            <span className={`text-lg font-semibold ${isCurrentDay ? 'text-sky-400' : ''}`}>
+                            <span className={`text-lg font-semibold ${isCurrentDay ? 'text-sky-400 font-bold' : ''}`}>
                                 {format(dayItem, dateFormat)}
                             </span>
                             {/* Indicator for content (to be implemented) */}
